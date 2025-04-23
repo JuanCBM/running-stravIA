@@ -11,7 +11,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "com.wikiblaz.straviarunning.domain",
         "com.wikiblaz.straviarunning.application",
         "com.wikiblaz.straviarunning.persistence",
-        "com.wikiblaz.straviarunning.rest"
+        "com.wikiblaz.straviarunning.rest",
+        "com.wikiblaz.straviarunning.strava"
 })
 @EntityScan("com.wikiblaz.straviarunning.persistence.entity")
 @EnableJpaRepositories("com.wikiblaz.straviarunning.persistence.repository")

@@ -6,7 +6,6 @@ import com.wikiblaz.straviarunning.rest.model.ActivityRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
@@ -15,7 +14,7 @@ import java.time.ZoneOffset;
 /**
  * MapStruct mapper for converting between domain and REST models
  */
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", implementationName = "RestActivityMapperImpl")
 public interface ActivityMapper {
 
     /**

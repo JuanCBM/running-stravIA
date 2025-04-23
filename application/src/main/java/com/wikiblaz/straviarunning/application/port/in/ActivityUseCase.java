@@ -44,4 +44,8 @@ public interface ActivityUseCase {
      * @param id the activity id to delete
      */
     void deleteActivity(String id);
+
+
+
+
 }

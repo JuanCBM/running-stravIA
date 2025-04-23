@@ -23,6 +23,7 @@
         <module>persistence</module>
         <module>rest</module>
         <module>bootstrap</module>
+        <module>strava</module>
     </modules>
 
     <properties>
@@ -53,6 +54,11 @@
             <dependency>
                 <groupId>com.wikiblaz</groupId>
                 <artifactId>rest</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.wikiblaz</groupId>
+                <artifactId>strava</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

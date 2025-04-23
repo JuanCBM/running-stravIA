@@ -1,7 +1,7 @@
 package com.wikiblaz.straviarunning.persistence.adapter;
 
 import com.wikiblaz.straviarunning.domain.model.Activity;
-import com.wikiblaz.straviarunning.domain.repository.ActivityRepository;
+import com.wikiblaz.straviarunning.domain.out.ActivityPort;
 import com.wikiblaz.straviarunning.persistence.entity.ActivityEntity;
 import com.wikiblaz.straviarunning.persistence.repository.ActivityJpaRepository;
 import com.wikiblaz.straviarunning.persistence.mapper.ActivityMapper;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 @Component
 @RequiredArgsConstructor
-public class ActivityRepositoryAdapter implements ActivityRepository {
+public class ActivityRepositoryAdapter implements ActivityPort {
     
     private final ActivityJpaRepository activityJpaRepository;
     private final ActivityMapper activityMapper;

@@ -2,7 +2,7 @@ package com.wikiblaz.straviarunning.application.service;
 
 import com.wikiblaz.straviarunning.application.port.in.ActivityUseCase;
 import com.wikiblaz.straviarunning.domain.model.Activity;
-import com.wikiblaz.straviarunning.domain.repository.ActivityRepository;
+import com.wikiblaz.straviarunning.domain.out.ActivityPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,34 +18,34 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ActivityService implements ActivityUseCase {
     
-    private final ActivityRepository activityRepository;
+    private final ActivityPort activityPort;
     
     @Override
     public Activity createActivity(Activity activity) {
         if (activity.getId() == null || activity.getId().isEmpty()) {
             activity.setId(UUID.randomUUID().toString());
         }
-        return activityRepository.save(activity);
+        return activityPort.save(activity);
     }
     
     @Override
     public Optional<Activity> getActivityById(String id) {
-        return activityRepository.findById(id);
+        return activityPort.findById(id);
     }
     
     @Override
     public List<Activity> getAllActivities() {
-        return activityRepository.findAll();
+        return activityPort.findAll();
     }
     
     @Override
     public Activity updateActivity(String id, Activity activity) {
         activity.setId(id);
-        return activityRepository.save(activity);
+        return activityPort.save(activity);
     }
     
     @Override
     public void deleteActivity(String id) {
-        activityRepository.deleteById(id);
+        activityPort.deleteById(id);
     }
 }

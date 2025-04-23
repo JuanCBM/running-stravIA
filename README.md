@@ -1,5 +1,7 @@
 # Running StravIA
 
+![Running StravIA Logo](logo.png)
+
 A Spring Boot application for tracking running activities, built using Hexagonal Architecture (also known as Ports and Adapters).
 
 ## Architecture Overview

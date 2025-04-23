@@ -10,6 +10,9 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
+  x-logo:
+    url: /logo.png
+    altText: Running StravIA Logo
 
 servers:
   - url: http://localhost:8080
@@ -18,6 +21,8 @@ servers:
 tags:
   - name: activities
     description: Operations related to running activities
+  - name: strava
+    description: Operations related to Strava integration
 
 paths:
   /api/activities:
@@ -132,6 +137,73 @@ paths:
         '404':
           description: Activity not found
 
+  /strava/activities:
+    get:
+      tags:
+        - strava
+      summary: Get Strava activities
+      description: Retrieves a list of activities from Strava
+      operationId: getStravaActivities
+      parameters:
+        - name: token
+          in: query
+          description: Strava access token
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '400':
+          description: Invalid token or error retrieving activities
+
+  /strava/auth:
+    get:
+      tags:
+        - strava
+      summary: Get Strava authentication URL
+      description: Returns a URL for Strava authentication
+      operationId: getStravaAuthUrl
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: Strava authentication URL
+
+  /strava/callback:
+    get:
+      tags:
+        - strava
+      summary: Handle Strava authentication callback
+      description: Handles the callback from Strava after authentication
+      operationId: handleStravaCallback
+      parameters:
+        - name: code
+          in: query
+          description: Authorization code from Strava
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: Token response from Strava
+        '400':
+          description: Error exchanging code for token
+
 components:
   schemas:
     ActivityType:
@@ -144,7 +216,7 @@ components:
         - RACE
         - WALK
         - HIKE
-      
+
     ActivityRequest:
       type: object
       required:
@@ -185,7 +257,7 @@ components:
           example: 50
         type:
           $ref: '#/components/schemas/ActivityType'
-          
+
     Activity:
       allOf:
         - $ref: '#/components/schemas/ActivityRequest'

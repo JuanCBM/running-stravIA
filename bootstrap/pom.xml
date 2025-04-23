@@ -30,6 +30,10 @@
             <groupId>com.wikiblaz</groupId>
             <artifactId>rest</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.wikiblaz</groupId>
+            <artifactId>strava</artifactId>
+        </dependency>
 
         <!-- Spring Boot dependencies -->
         <dependency>

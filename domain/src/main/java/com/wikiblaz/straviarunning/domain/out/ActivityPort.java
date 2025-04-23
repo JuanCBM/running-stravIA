@@ -1,4 +1,4 @@
-package com.wikiblaz.straviarunning.domain.repository;
+package com.wikiblaz.straviarunning.domain.out;
 
 import com.wikiblaz.straviarunning.domain.model.Activity;
 
@@ -9,7 +9,7 @@ import java.util.Optional;
  * Repository interface for Activity domain entity
  * This is a port in the hexagonal architecture
  */
-public interface ActivityRepository {
+public interface ActivityPort {
     
     /**
      * Save an activity
