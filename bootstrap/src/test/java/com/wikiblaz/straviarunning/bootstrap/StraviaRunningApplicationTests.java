@@ -1,4 +1,4 @@
-package com.wikiblaz.straviarunning;
+package com.wikiblaz.straviarunning.bootstrap;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

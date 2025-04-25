@@ -1,4 +1,4 @@
-package com.wikiblaz.straviarunning;
+package com.wikiblaz.straviarunning.bootstrap;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "com.wikiblaz.straviarunning.application",
         "com.wikiblaz.straviarunning.persistence",
         "com.wikiblaz.straviarunning.rest",
-        "com.wikiblaz.straviarunning.strava"
+        "com.wikiblaz.straviarunning.strava",
+        "com.wikiblaz.straviarunning.bootstrap.config"
 })
 @EntityScan("com.wikiblaz.straviarunning.persistence.entity")
 @EnableJpaRepositories("com.wikiblaz.straviarunning.persistence.repository")
