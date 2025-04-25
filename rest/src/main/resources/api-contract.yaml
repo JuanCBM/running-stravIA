@@ -216,6 +216,7 @@ components:
         - RACE
         - WALK
         - HIKE
+        - OTHER
 
     ActivityRequest:
       type: object

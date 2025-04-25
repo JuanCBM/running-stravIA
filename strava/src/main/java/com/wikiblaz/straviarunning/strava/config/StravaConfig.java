@@ -9,13 +9,16 @@ import org.springframework.beans.factory.annotation.Value;
  */
 @Configuration
 public class StravaConfig {
-    
+
     @Value("${strava.client.id:}")
     public String clientId;
 
     @Value("${strava.client.secret:}")
     public String clientSecret;
-    
+
     @Value("${strava.redirect.uri:}")
     public String redirectUri;
+
+    @Value("${strava.frontend.url:http://localhost:4200}")
+    public String frontendUrl;
 }

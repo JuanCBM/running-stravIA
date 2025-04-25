@@ -10,5 +10,6 @@ public enum ActivityType {
     TREADMILL,
     RACE,
     WALK,
-    HIKE
+    HIKE,
+    OTHER
 }

@@ -54,11 +54,6 @@ public class StravaActivityAdapter implements StravaActivityPort {
       for (Map<String, Object> activityData : activities) {
         ActivityType type = mapActivityType((String) activityData.get("type"));
 
-        // Skip activities that don't match our supported types
-        if (type == null) {
-          continue;
-        }
-
         LocalDateTime startDate = null;
         if (activityData.get("start_date") != null) {
           startDate = LocalDateTime.parse(((String) activityData.get("start_date")).replace("Z", ""));
@@ -95,26 +90,18 @@ public class StravaActivityAdapter implements StravaActivityPort {
 
   private ActivityType mapActivityType(String stravaType) {
     if (stravaType == null) {
-      return null;
+      return ActivityType.RUN; // Default to OTHER if type is null
     }
 
-    switch (stravaType.toUpperCase()) {
-      case "RUN":
-        return ActivityType.RUN;
-      case "TRAIL_RUN":
-        return ActivityType.TRAIL_RUN;
-      case "TRACK_RUN":
-        return ActivityType.TRACK_RUN;
-      case "TREADMILL":
-        return ActivityType.TREADMILL;
-      case "RACE":
-        return ActivityType.RACE;
-      case "WALK":
-        return ActivityType.WALK;
-      case "HIKE":
-        return ActivityType.HIKE;
-      default:
-        return null;
-    }
+      return switch (stravaType.toUpperCase()) {
+          case "RUN" -> ActivityType.RUN;
+          case "TRAIL_RUN" -> ActivityType.TRAIL_RUN;
+          case "TRACK_RUN" -> ActivityType.TRACK_RUN;
+          case "TREADMILL" -> ActivityType.TREADMILL;
+          case "RACE" -> ActivityType.RACE;
+          case "WALK" -> ActivityType.WALK;
+          case "HIKE" -> ActivityType.HIKE;
+          default -> ActivityType.OTHER; // Default to OTHER for unmapped types
+      };
   }
 }
